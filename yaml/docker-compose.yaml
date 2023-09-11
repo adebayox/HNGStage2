@@ -1,0 +1,11 @@
+version: "3"
+services:
+  db:
+    image: mysql:8.0.33
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_USER: adebayox
+      MYSQL_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: some-mysql
+    ports:
+      - "3308:3306"
