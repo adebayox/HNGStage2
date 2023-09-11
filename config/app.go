@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"os"
 	_"github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/jinzhu/gorm"
 )
@@ -11,11 +12,11 @@ var (
 )
 
 func Connect() {
-    dbHost := "localhost"        
-    dbPort := "3307"              
-    dbUser := "root"             
-    dbPassword := "my-secret-pw"   
-    dbName := "personDB"           
+    dbHost := os.Getenv("DB_HOST")         
+    dbPort := os.Getenv("DB_PORT")        
+    dbUser := os.Getenv("DB_USER")        
+    dbPassword := os.Getenv("DB_PASSWORD")
+    dbName := os.Getenv("DB_NAME")        
 
     dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", dbUser, dbPassword, dbHost, dbPort, dbName)
 
