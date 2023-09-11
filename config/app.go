@@ -2,7 +2,6 @@ package config
 
 import (
 	"fmt"
-	"os"
 	_"github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/jinzhu/gorm"
 )
@@ -19,7 +18,7 @@ func Connect() {
     dbName := "personDB"           
 
     dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", dbUser, dbPassword, dbHost, dbPort, dbName)
-	
+
     d, err := gorm.Open("mysql", dsn)
     if err != nil {
         panic(err)
