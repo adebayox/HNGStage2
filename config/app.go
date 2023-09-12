@@ -1,27 +1,27 @@
 package config
 
 import (
-	"fmt"
-	_"github.com/jinzhu/gorm/dialects/mysql"
-	"github.com/jinzhu/gorm"
+    _ "github.com/lib/pq"
+    "github.com/jinzhu/gorm"
+    _ "github.com/jinzhu/gorm/dialects/postgres"
+    "fmt"
 )
 
 var (
-	db * gorm.DB
+    db *gorm.DB
 )
 
 func Connect() *gorm.DB {
-	dsn := fmt.Sprintf("adebayox:my-secret-pw@tcp(localhost:3308)/some-mysql")
-
-    db, err := gorm.Open("mysql", dsn)
-
+    connectionString := "postgres://mdnfotly:JvWKhHxRRB4eh8AomMo1fIBYPGeQOKOe@berry.db.elephantsql.com/mdnfotly"
+    var err error
+    db, err = gorm.Open("postgres", connectionString)
     if err != nil {
-        panic(err.Error())
+        panic(err)
     }
-
+    fmt.Println("Connected to ElephantSQL")
     return db
 }
 
-func GetDB() *gorm.DB{
-	return db
+func GetDB() *gorm.DB {
+    return db
 }

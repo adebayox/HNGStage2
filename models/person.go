@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-var db *gorm.DB
+var db = config.Connect()
 
 type Person struct{
 	gorm.Model
